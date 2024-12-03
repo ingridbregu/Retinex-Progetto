@@ -4,8 +4,7 @@ import cv2
 
 # Funzione per il Retinex a singola scala
 def singleScaleRetinex(img, variance):
-    # Calcola il logaritmo dell'immagine originale e sottrae il logaritmo dell'immagine sfocata
-    # utilizzando un filtro Gaussiano per migliorare il contrasto.
+    # Calcola il logaritmo dell'immagine originale e sottrae il logaritmo dell'immagine sfocata utilizzando un filtro Gaussiano per migliorare il contrasto.
     return np.log10(img) - np.log10(cv2.GaussianBlur(img, (0, 0), variance))
 
 # Funzione per il Retinex a più scale
@@ -91,8 +90,7 @@ variance = 300 # Varianza per il Retinex a singola scala.
 
 
 # Lettura immagine
-# img = cv2.imread('106.png')
-img = cv2.imread('town.jpg')
+img = cv2.imread('img.jpg')
 
 
 # Elaborazione
@@ -101,29 +99,26 @@ img_ssr = SSR(img, variance)
 img_msrcr = MSRCR(img, sigma_scales=[15, 80, 250], alpha=125, beta=46, G=192, b=-30, low_per=1, high_per=1)
 
 
-
-
 # Visualizzazione e salvataggio
-
 # Directory di output
-out_dir = 'C:/Users/bregu/Desktop/UNIMI/PRINCIPI E MODELLI DELLA PERCEZIONE/outputUtili/frutta'
+# out_dir = ''
 # Salva le immagini nella directory specificata
 # cv2.imwrite(out_dir + 'SSR.jpg', img_ssr)
 # cv2.imwrite(out_dir + 'MSR.jpg', img_msr)
 # cv2.imwrite(out_dir + 'MSRCR.jpg', img_msrcr)
 
 # Visualizzazione delle immagini con Matplotlib
-img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-plt.subplot(221), plt.title('original'), plt.imshow(img_rgb), plt.axis('off')
+# img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+# plt.subplot(221), plt.title('original'), plt.imshow(img_rgb), plt.axis('off')
 
-ssr_rgb = cv2.cvtColor(img_ssr, cv2.COLOR_BGR2RGB)
-plt.subplot(222), plt.title('ssr'), plt.imshow(ssr_rgb), plt.axis('off')
+# ssr_rgb = cv2.cvtColor(img_ssr, cv2.COLOR_BGR2RGB)
+# plt.subplot(222), plt.title('ssr'), plt.imshow(ssr_rgb), plt.axis('off')
 
-msr_rgb = cv2.cvtColor(img_msr, cv2.COLOR_BGR2RGB)
-plt.subplot(223), plt.title('msr'), plt.imshow(msr_rgb), plt.axis('off')
+# msr_rgb = cv2.cvtColor(img_msr, cv2.COLOR_BGR2RGB)
+# plt.subplot(223), plt.title('msr'), plt.imshow(msr_rgb), plt.axis('off')
 
-msrcr_rgb = cv2.cvtColor(img_msr, cv2.COLOR_BGR2RGB)
-plt.subplot(224), plt.title('msrcr'), plt.imshow(msrcr_rgb), plt.axis('off')
-plt.show()
+# msrcr_rgb = cv2.cvtColor(img_msr, cv2.COLOR_BGR2RGB)
+# plt.subplot(224), plt.title('msrcr'), plt.imshow(msrcr_rgb), plt.axis('off')
+# plt.show()
 
 
